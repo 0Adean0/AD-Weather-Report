@@ -56,8 +56,30 @@ function formSubmission(event) {
     }
     buttonArr.push(cityName)
     localStorage.setItem("buttonArr",JSON.stringify(buttonArr))
-}
 
+    var searchedCityButton =document.createElement("button")
+    searchedCityButton.texts = cityName
+    searchedCityButton.setAttribute("class","btn")
+    pCBtn.append(searchedCityButton)
+
+    console.log(buttonArr)
+}
+function storageFetch(){
+    var newCityButton=JSON.parse(localStorage.getItem("buttonArr"))
+
+    if(!newCityButton) {
+        newCityButton=[]
+    }
+    for(var i =0;i<newCityButton.length;i++){
+        var newCityName=newCityButton[i].cityName
+        var searchedCityButton=document.createElement("button")
+        searchedCityButton.texts=newCityName
+        searchedCityButton.setAttribute("class","btn")
+        pCBtn.append(searchedCityButton)
+    }
+}
+storageFetch()
+// ----------------------------------------------------------------------------------------------------
 
 
 
